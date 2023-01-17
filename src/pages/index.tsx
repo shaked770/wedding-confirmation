@@ -27,7 +27,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Shaked's stuff
+              <p>Shaked&apos;s stuff</p>
             </a>
           </div>
         </div>
