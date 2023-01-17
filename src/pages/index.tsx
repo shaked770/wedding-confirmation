@@ -5,10 +5,6 @@ import styles from "@/styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const temp = {
-  name: "Aviva",
-};
-
 export default function Home() {
   return (
     <>
@@ -47,7 +43,7 @@ export default function Home() {
         <div className={styles.grid}>
           <div className={styles.card}>
             <h2 className={inter.className}>
-              Hello, <span>(Guest name)!</span>
+              Hello, <span>(Guest name)!</span> And I love you aviva
             </h2>
             <br />
             <p className={inter.className}>
