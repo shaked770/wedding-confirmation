@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <div className={styles.description}>
+        {/* <div className={styles.description}>
           <p>Change Languages</p>
           <div>
             <a
@@ -26,7 +26,7 @@ export default function Home() {
               <p>Shaked&apos;s stuff</p>
             </a>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.center}>
           <Image
