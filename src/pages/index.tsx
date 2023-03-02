@@ -43,16 +43,17 @@ export default function Home() {
         <div className={styles.grid}>
           <div className={styles.card}>
             <h2 className={inter.className}>
-              Hello, <span>(Guest name)!</span>
+              Save the Date!
+              <br/>
+              28.8.2023
             </h2>
-            <br />
-            <p className={inter.className}>
+            {/* <p className={inter.className}>
               Welcome to the official Shaked and Aviva wedding arrival
               confirmation page.
-            </p>
+            </p> */}
           </div>
 
-          <a className={styles.card}>
+          {/* <a className={styles.card}>
             <h2 className={inter.className}>
               Here will be Arrival confirmation.
             </h2>
@@ -76,7 +77,7 @@ export default function Home() {
             <p className={inter.className}>
               Here the user can change his selection.
             </p>
-          </a>
+          </a> */}
         </div>
       </main>
     </>
