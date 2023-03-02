@@ -43,7 +43,7 @@ export default function Home() {
         <div className={styles.grid}>
           <div className={styles.card}>
             <h2 className={inter.className}>
-              Hello, <span>(Guest name)!</span> And I love you aviva
+              Hello, <span>(Guest name)!</span>
             </h2>
             <br />
             <p className={inter.className}>
