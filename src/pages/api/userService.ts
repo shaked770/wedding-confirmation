@@ -1,4 +1,4 @@
-import { Person, Permissions, ArrivalStatus } from "@/pages/types";
+import { Person, Permissions, ArrivalStatus } from "src/types";
 
 const developer: Person = {
   id: "1",

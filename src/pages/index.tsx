@@ -4,7 +4,7 @@ import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
 import { getUser } from "@/pages/api/userService";
-import { arrivalStatusToText, Person } from "@/pages/types";
+import { arrivalStatusToText, Person } from "src/types";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
