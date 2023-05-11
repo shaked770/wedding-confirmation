@@ -60,7 +60,7 @@ function CenterImage() {
 export default function Home() {
   const router = useRouter();
   const { userId } = router.query;
-  const user = getUser((userId as string) ?? "1"); // TODO: add fallback for nonexistant id or wrong idc
+  const user = getUser((userId as string) ?? "1"); // TODO: add fallback for nonexistant id or wrong id
   if (!user) return <></>;
   return (
     <>
