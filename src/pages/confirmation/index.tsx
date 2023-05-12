@@ -1,18 +1,15 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { getUser } from "@/pages/api/userService";
+import { useGetUser } from "@/hooks";
 
 export default function Confirmation() {
-  const router = useRouter();
-  const { userId } = router.query;
-  const user = getUser((userId as string) ?? "1"); // TODO: add fallback for nonexistant id or wrong id
+  const user = useGetUser();
   if (!user) return <></>;
 
   return (
     <ul>
       <li>This is confirmation</li>
       <li>
-        <Link href={`/?userId=${userId}`}> get back</Link>
+        <Link href={"/"}> get back</Link>
       </li>
     </ul>
   );
