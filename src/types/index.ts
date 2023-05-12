@@ -12,8 +12,8 @@ enum ArrivalStatus {
 }
 const arrivalStatusToText = {
   [ArrivalStatus.NOT_ARRIVING]: "not arriving",
-  [ArrivalStatus.CEREMONY_ONLY]: "the hupa only",
-  [ArrivalStatus.WHOLE]: "the wedding!",
+  [ArrivalStatus.CEREMONY_ONLY]: "ceremony only",
+  [ArrivalStatus.WHOLE]: "whole wedding",
   [ArrivalStatus.AFTER_PARTY]: "arriving to the after party",
 };
 
