@@ -17,11 +17,20 @@ const arrivalStatusToText = {
   [ArrivalStatus.AFTER_PARTY]: "arriving to the after party",
 };
 
+interface Preferences {
+  allergies: string[];
+  vegetarian: boolean;
+  vegan: boolean;
+  wheelchair: boolean;
+  kidsMeal: boolean;
+}
+
 interface Person {
   id: string;
   username: string;
   permissions: Permissions[];
   arrivalStatus: ArrivalStatus;
+  preferences?: Preferences;
 }
 
 export type { Person };
