@@ -25,6 +25,6 @@ const userMap = new Map(
   [developer, admin, guest].map((user) => [user.id, user])
 );
 
-export const getUser = (userId: string): Person => {
-  return userMap.get(userId) as Person;
+export const getUser = async (userId: string): Promise<Person> => {
+  return Promise.resolve(userMap.get(userId) as Person);
 };
