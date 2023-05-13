@@ -2,44 +2,75 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
-import { useRouter } from "next/router";
-import { getUser } from "@/pages/api/userService";
-import { arrivalStatusToText, Person } from "src/types";
+import { arrivalStatusToText } from "src/types";
 import Link from "next/link";
+import { useGetUser } from "@/hooks";
 
 const inter = Inter({ subsets: ["latin"] });
 
-function Status({ user }: { user: Person }) {
-  const status = user.arrivalStatus
-    ? `arriving to ${arrivalStatusToText[user.arrivalStatus]}`
+function StatusCard() {
+  const user = useGetUser();
+  if (!user) return <></>;
+  const status = user.status
+    ? `arriving to ${arrivalStatusToText[user.status]}`
     : "not registered.";
   return (
-    <a className={styles.card}>
-      <h2 className={inter.className}>Right now, you are {status}</h2>
-      {user.arrivalStatus && (
-        <Link
-          href={`/confirmation?userId=${user.id}`}
-          className={inter.className}
-        >
-          Do you need to change this?
+    <div className={styles.card}>
+      <h2 className={inter.className}>Status: {status}</h2>
+      {user.status && (
+        <Link href={`/confirmation`} className={inter.className}>
+          click here to change
         </Link>
       )}
-    </a>
+    </div>
   );
 }
 
-function Introduction({ user }: { user: Person }) {
+function IntroductionCard() {
+  const user = useGetUser();
+  if (!user) return <></>;
+
   return (
     <div className={styles.card}>
       <h2 className={inter.className}>
-        Hello, <span>{user.username}!</span>
+        Hello, <span>{user.name}!</span>
       </h2>
       <br />
-      <p className={inter.className}>
-        Welcome to the official Shaked and Aviva wedding arrival confirmation
-        page.
-      </p>
+      <p className={inter.className}>Happy to see you.</p>
     </div>
+  );
+}
+
+function PreferencesCard() {
+  const user = useGetUser();
+  if (!user) return <></>;
+
+  return (
+    <div className={styles.card}>
+      <h2 className={inter.className}>
+        <Link href={"/preferences"}>Preferences</Link>
+      </h2>
+    </div>
+  );
+}
+
+function ArrivalInformation() {
+  return (
+    <>
+      <div>
+        <a
+          href={
+            "https://ul.waze.com/ul?place=ChIJ3YcwnuHQAhUR6vFKi8aJe8M&ll=31.80896600%2C35.10053200&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location"
+          }
+        >
+          <img
+            style={{ height: "100px" }}
+            alt={"Navigate with waze"}
+            src={"/waze.png"}
+          />
+        </a>
+      </div>
+    </>
   );
 }
 
@@ -58,10 +89,8 @@ function CenterImage() {
 }
 
 export default function Home() {
-  const router = useRouter();
-  const { userId } = router.query;
-  const user = getUser((userId as string) ?? "1"); // TODO: add fallback for nonexistant id or wrong id
-  if (!user) return <></>;
+  const user = useGetUser();
+  if (!user) return <div>no user</div>; // TODO: add fallback input
   return (
     <>
       <Head>
@@ -76,9 +105,13 @@ export default function Home() {
         </div>
 
         <div className={styles.grid}>
-          <Introduction user={user} />
+          <IntroductionCard />
           <br />
-          <Status user={user} />
+          <StatusCard />
+          <br />
+          <PreferencesCard />
+          <br />
+          <ArrivalInformation />
         </div>
       </main>
     </>

@@ -12,16 +12,25 @@ enum ArrivalStatus {
 }
 const arrivalStatusToText = {
   [ArrivalStatus.NOT_ARRIVING]: "not arriving",
-  [ArrivalStatus.CEREMONY_ONLY]: "the hupa only",
-  [ArrivalStatus.WHOLE]: "the wedding!",
+  [ArrivalStatus.CEREMONY_ONLY]: "ceremony only",
+  [ArrivalStatus.WHOLE]: "whole wedding",
   [ArrivalStatus.AFTER_PARTY]: "arriving to the after party",
 };
 
+interface Preferences {
+  allergies: string[];
+  vegetarian: boolean;
+  vegan: boolean;
+  wheelchair: boolean;
+  kidsMeal: boolean;
+}
+
 interface Person {
   id: string;
-  username: string;
+  name: string;
   permissions: Permissions[];
-  arrivalStatus: ArrivalStatus;
+  status: ArrivalStatus;
+  preferences?: Preferences;
 }
 
 export type { Person };
