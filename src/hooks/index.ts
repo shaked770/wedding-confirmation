@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getUser } from "@/pages/api/userService";
 import { Person } from "@/types";
 
 export function useGetUserId() {
@@ -29,11 +28,14 @@ export function useGetUserId() {
 
 export function useGetUser() {
   const userId = useGetUserId();
-  const [user, setUser] = useState<Person>();
+  const [user, setUser] = useState<Person | null>();
 
   useEffect(() => {
     if ("0" !== userId) {
-      getUser(userId).then((fetchedUser) => setUser(fetchedUser));
+      fetch(`/api/user?userId=${userId}`).then(async (res) => {
+        const user = await res.json();
+        setUser(user);
+      });
     }
   }, [userId, setUser]);
 

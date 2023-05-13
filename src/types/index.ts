@@ -27,9 +27,9 @@ interface Preferences {
 
 interface Person {
   id: string;
-  username: string;
+  name: string;
   permissions: Permissions[];
-  arrivalStatus: ArrivalStatus;
+  status: ArrivalStatus;
   preferences?: Preferences;
 }
 
